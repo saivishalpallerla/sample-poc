@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: nginx01
+  name: nginx01
+spec:
+  replicas: 6
+  selector:
+    matchLabels:
+      app: nginx01
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: nginx01
+    spec:
+      containers:
+      - image: sreeharshav/rollingupdate:v1
+        name: rollingupdate
+        resources: {}
+status: {}

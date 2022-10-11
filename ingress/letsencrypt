@@ -1,0 +1,18 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: nginx-tls-awscoffee-cert
+  namespace: default
+spec:
+  secretName: nginx-tls-default
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+  dnsNames:
+    - '*.vishalpallerla.xyz'
+  acme:
+    config:
+      - dns01:
+          provider: route53
+        domains:
+          - '*.vishalpallerla.xyz'

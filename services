@@ -1,0 +1,54 @@
+#clusterIP 
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: nginx01
+  name: clusterip
+spec:
+  ports:
+  - port: 8000
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: nginx01
+
+
+  #NodePort
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: nginx01
+  name: nodeport
+spec:
+  ports:
+  - port: 8000
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: nginx01
+  type: NodePort
+status:
+  loadBalancer: {}
+
+  # AWS n/w Lb
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: nginx01
+  name: alb
+spec:
+  ports:
+  - port: 8000
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: nginx01
+  type: LoadBalancer
+status:
+  loadBalancer: {}
+
