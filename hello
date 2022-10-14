@@ -5,3 +5,4 @@ hello
 nameste
 hi
 whoami
+ps -ek
